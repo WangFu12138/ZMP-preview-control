@@ -11,7 +11,9 @@ import time
 
 def inverse_kinematics(target_joint,current_q, target_dir, target_pos):
 
-    urdf_filename = '/home/wzn/双足/Biped-Locomotion/23-TR-R2人形机器人0815/urdf/23-TR-R2人形机器人0815.urdf'
+    # 获取项目根目录
+    project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+    urdf_filename = os.path.join(project_root, '23-TR-R2人形机器人0815/urdf/23-TR-R2人形机器人0815.urdf')
     # 从 URDF 文件构建机器人模型
     model = pinocchio.buildModelFromUrdf(urdf_filename)
     # 为模型创建数据对象，用于存储计算过程中的中间结果
@@ -85,8 +87,8 @@ def inverse_kinematics(target_joint,current_q, target_dir, target_pos):
 
 def walk():
 
-    model = mujoco.MjModel.from_xml_path(
-        "/home/wzn/双足/Biped-Locomotion/23-TR-R2人形机器人0815/urdf/scene.xml")
+    scene_path = os.path.join(project_root, "23-TR-R2人形机器人0815/urdf/scene.xml")
+    model = mujoco.MjModel.from_xml_path(scene_path)
     
     data = mujoco.MjData(model)
     global init_qpos

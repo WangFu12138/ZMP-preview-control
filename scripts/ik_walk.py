@@ -1,10 +1,12 @@
 import pinocchio 
 import numpy as np
 from numpy.linalg import norm, solve
+import os
 
 def inverse_kinematics(target_joint,current_q, target_dir, target_pos):
-
-    urdf_filename = '/home/wzn/双足/Biped-Locomotion/23-TR-R2人形机器人0815/urdf/23-TR-R2人形机器人0815.urdf'
+    
+    project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+    urdf_filename = os.path.join(project_root, 'R2/urdf/R2.urdf')
     # 从 URDF 文件构建机器人模型
     model = pinocchio.buildModelFromUrdf(urdf_filename)
     # 为模型创建数据对象，用于存储计算过程中的中间结果
@@ -77,10 +79,12 @@ def inverse_kinematics(target_joint,current_q, target_dir, target_pos):
     return q.flatten().tolist()
 
 if __name__ == "__main__":
-    q_data = np.load('/home/wzn/双足/Biped-Locomotion/combined_vectors.npy')
-    com_data = np.load('/home/wzn/双足/Biped-Locomotion/CoM_trajectory.npy')
-    left_foot_data = np.load('/home/wzn/双足/Biped-Locomotion/footTrj_left.npy')
-    right_foot_data = np.load('/home/wzn/双足/Biped-Locomotion/footTrj_right.npy')
+    project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+    # 加载数据文件
+    q_data = np.load(os.path.join(project_root, 'combined_vectors.npy'))
+    com_data = np.load(os.path.join(project_root, 'CoM_trajectory.npy'))
+    left_foot_data = np.load(os.path.join(project_root, 'footTrj_left.npy'))
+    right_foot_data = np.load(os.path.join(project_root, 'footTrj_right.npy'))
     
     current_qpos = q_data[-1]
     # 绕X轴旋转10度的旋转矩阵

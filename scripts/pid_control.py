@@ -1,5 +1,6 @@
 import numpy as np
 import time
+import os
 import mujoco
 import mujoco.viewer as viewer
 from com import read_robot_state
@@ -49,8 +50,10 @@ def execute_d_command(model, data,q_data):
 def walk():
     global key_pressed
     
-    model = mujoco.MjModel.from_xml_path(
-        "/home/wzn/双足/Biped-Locomotion/23-TR-R2人形机器人0815/urdf/scene.xml")
+    # 获取项目根目录
+    project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+    scene_path = os.path.join(project_root, "R2/urdf/scene.xml")
+    model = mujoco.MjModel.from_xml_path(scene_path)
 
     data = mujoco.MjData(model)
     
@@ -82,7 +85,8 @@ def walk():
     #         model.geom_conaffinity[j] = 0
 
 
-    q_data = np.load('/home/wzn/双足/Biped-Locomotion/ik-walk_0.70.npy')
+    q_data_path = os.path.join(project_root, "ik-walk_0.70.npy")
+    q_data = np.load(q_data_path)
     print(f"加载轨迹数据: q_data.shape = {q_data.shape}")
     max_trajectory_index = len(q_data) - 1  # 最大有效索引
 
