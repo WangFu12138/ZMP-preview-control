@@ -1,0 +1,62 @@
+<mujoco model="converted_robot scene">
+  <include file="R2_mujoco.xml"/>
+  <statistic center="0 0 1" extent="1.8"/>
+
+  <!-- 仿真求解器配置 - 优化稳定性 -->
+  <option timestep="0.001" iterations="100" solver="Newton" tolerance="1e-10">
+    <flag warmstart="enable" energy="enable" contact="enable"/>
+  </option>
+  
+  <!-- 禁用自动重置 -->
+  <size nconmax="500" njmax="1000"/>
+
+  <!-- 初始姿态配置 -->
+  <keyframe>
+    <key name="home" 
+         qpos="0 0 0.85 1 0 0 0
+               0 0 0 0 0 0
+               0 0 0 0 0 0"
+         ctrl="0 0 0 0 0 0
+               0 0 0 0 0 0"/>
+    <key name="stand" 
+         qpos="0 0 0.83 1 0 0 0
+               0.13 0 0 0.25 -0.117 0
+               -0.13 0 0 0.25 0.117 0"
+         ctrl=" 0.13 0 0 0.25 -0.117 0
+               -0.13 0 0 0.25 0.117 0"/>
+    <key name="dunxia" 
+         qpos="0 0 0.45 1 0 0 0
+               1.4660637509973746 -0.015473671330820891 -0.13824390461762665 2.2234049841951116 -0.7584125315353998 0.13910170504668404
+               -1.4669273471362614 -0.014341771124909714 0.13843359609458836 2.2170677188855348 0.7511346685639877 -0.13916979294821094"
+        ctrl=" 1.4660637509973746 -0.015473671330820891 -0.13824390461762665 2.2234049841951116 -0.7584125315353998 0.13910170504668404
+               -1.4669273471362614 -0.014341771124909714 0.13843359609458836 2.2170677188855348 0.7511346685639877 -0.13916979294821094"
+    />
+  <key name="dunxia2" 
+         qpos="0 0 0.70 1 0 0 0
+               0.72514228 -0.06414193 -0.05605951  1.20782456 -0.48448125  0.08516185
+               -0.72619037 -0.06368866  0.05660954  1.2015769 0.47719031 -0.08518537"
+        ctrl=" 0.72514228 -0.06414193 -0.05605951  1.20782456 -0.48448125  0.08516185
+               -0.72619037 -0.06368866  0.05660954  1.2015769 0.47719031 -0.08518537"
+    />
+  </keyframe>
+
+  <visual>
+    <headlight diffuse="0.6 0.6 0.6" ambient="0.3 0.3 0.3" specular="0 0 0"/>
+    <rgba haze="0.15 0.25 0.35 1"/>
+    <global azimuth="160" elevation="-20"/>
+  </visual>
+
+  <asset>
+    <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512" height="3072"/>
+    <texture type="2d" name="groundplane" builtin="checker" mark="edge" rgb1="0.2 0.3 0.4" rgb2="0.1 0.2 0.3"
+      markrgb="0.8 0.8 0.8" width="300" height="300"/>
+    <material name="groundplane" texture="groundplane" texuniform="true" texrepeat="5 5" reflectance="0.2"/>
+  </asset>
+
+  <worldbody>
+    <light pos="0 0 3.5" dir="0 0 -1" directional="true"/>
+    <!-- 地面配置：contype=2(属于组2), conaffinity=1(与组1碰撞，即与机器人碰撞) -->
+    <geom name="floor" pos="0 0 0" size="0 0 0.05" type="plane" material="groundplane" contype="2" conaffinity="1"/>
+  </worldbody>
+
+</mujoco>

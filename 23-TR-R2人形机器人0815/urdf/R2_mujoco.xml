@@ -1,0 +1,113 @@
+<mujoco model="23-TR-R2人形机器人0815">
+  <compiler angle="radian"/>
+
+  <!-- 默认关节属性：添加阻尼和摩擦 -->
+  <default>
+    <joint damping="1.0" armature="0.1" frictionloss="0.5"/>
+    <!-- 机器人部件默认配置：contype=1(属于组1), conaffinity=2(只与组2碰撞，即只与地面碰撞) -->
+    <geom friction="1.25 0.005 0.0001" condim="3" solimp="0.9 0.95 0.001" solref="0.02 1" contype="1" conaffinity="2"/>
+  </default>
+
+  <asset>
+    <mesh name="base_link" file="base_link.STL"/>
+    <mesh name="left_leg_pitch" file="left_leg_pitch.STL"/>
+    <mesh name="left_leg_rol" file="left_leg_rol.STL"/>
+    <mesh name="left_leg_yaw" file="left_leg_yaw.STL"/>
+    <mesh name="left_knee" file="left_knee.STL"/>
+    <mesh name="left_ankle_pitch" file="left_ankle_pitch.STL"/>
+    <mesh name="left_ankle_raw" file="left_ankle_raw.STL"/>
+    <mesh name="right_leg_pitch" file="right_leg_pitch.STL"/>
+    <mesh name="right_leg_rol" file="right_leg_rol.STL"/>
+    <mesh name="right_leg_yaw" file="right_leg_yaw.STL"/>
+    <mesh name="right_knee" file="right_knee.STL"/>
+    <mesh name="right_ankle_pitch" file="right_ankle_pitch.STL"/>
+    <mesh name="right_ankle_raw" file="right_ankle_raw.STL"/>
+  </asset>
+
+  <worldbody>
+    <body name="base_link" pos="0 0 0.85" quat="1 0 0 0">
+      <inertial pos="0.00117665871297902 0.00223343832261028 0.182265795522625" mass="15.164363593055" diaginertia="0.0572906265394081 0.0411153856813689 0.0358191121887323"/>
+      <freejoint/>
+      <geom type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="base_link"/>
+      <!-- 保持原有的左右腿连接 -->
+      <body name="left_leg_pitch" pos="0 -0.069 -0.1065">
+        <inertial pos="-0.00251689 -0.0466794 -0.0170464" quat="0.926203 -0.376591 0.0168272 0.00664631" mass="0.337531" diaginertia="0.000472791 0.000392848 0.000325429"/>
+        <joint name="left_leg_pitch" pos="0 0 0" axis="0 -1 0" range="-3.14159 3.14159"/>
+        <geom type="mesh" rgba="1 1 1 1" mesh="left_leg_pitch"/>
+        <body name="left_leg_rol" pos="0.0568021 -0.0499934 -0.0203354">
+          <inertial pos="-0.0327109 -0.00101968 -0.0366212" quat="0.0228761 0.393595 0.00904088 0.918955" mass="0.60462" diaginertia="0.00109828 0.000954635 0.000657616"/>
+          <joint name="left_leg_rol" pos="0 0 0" axis="-0.999982 0 0.0060241" range="-3.14159 3.14159"/>
+          <geom type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="left_leg_rol"/>
+          <body name="left_leg_yaw" pos="-0.0490643 0 -0.0647128">
+            <inertial pos="-0.00312327 0.00213974 -0.103905" quat="0.994043 0.0769031 -0.0763861 0.0113638" mass="1.51192" diaginertia="0.00302577 0.00261649 0.00233234"/>
+            <joint name="left_leg_yaw" pos="0 0 0" axis="0.0060241 0 0.999982" range="-3.14159 3.14159"/>
+            <geom type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="left_leg_yaw"/>
+            <body name="left_knee" pos="-0.0111143 -0.0412086 -0.184936">
+              <inertial pos="-0.00555954 0.0462598 -0.112556" quat="0.703662 0.0204972 0.018944 0.709986" mass="1.85019" diaginertia="0.0264556 0.025995 0.00183497"/>
+              <joint name="left_knee" pos="0 0 0" axis="0 1 0" range="-3.14159 3.14159"/>
+              <geom type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="left_knee"/>
+              <body name="left_ankle_pitch" pos="0.00135311 0.0652086 -0.413066">
+                <inertial pos="-2.64456e-06 -0.019 -0.00812721" quat="0.707106 -0.000207109 -0.000207109 0.707107" mass="0.0171591" diaginertia="3.26465e-06 2.45582e-06 2.25511e-06"/>
+                <joint name="left_ankle_pitch" pos="0 0 0" axis="0 1 0" range="-3.14159 3.14159"/>
+                <geom type="mesh" rgba="1 1 1 1" mesh="left_ankle_pitch"/>
+                <body name="left_ankle_raw" pos="0.016 -0.019 -0.0150753">
+                  <inertial pos="0.00170486 6.01478e-08 -0.0260856" quat="0 0.705697 0 0.708514" mass="0.629304" diaginertia="0.00261358 0.00232893 0.000363198"/>
+                  <joint name="left_ankle_raw" pos="0 0 0" axis="-1 0 0" range="-3.14159 3.14159"/>
+                  <geom type="mesh" rgba="0.298039 0.298039 0.298039 1" mesh="left_ankle_raw"/>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="right_leg_pitch" pos="0 0.069 -0.1065">
+        <inertial pos="-0.00254725 0.0432466 -0.0132086" quat="0.932881 0.360019 0.00655702 -0.0086879" mass="0.386381" diaginertia="0.000557065 0.000478927 0.000348493"/>
+        <joint name="right_leg_pitch" pos="0 0 0" axis="0 1 0" range="-3.14159 3.14159"/>
+        <geom type="mesh" rgba="1 1 1 1" mesh="right_leg_pitch"/>
+        <body name="right_leg_rol" pos="0.0566995 0.0500066 -0.0199193">
+          <inertial pos="-0.0311876 0.000817096 -0.03492" quat="-0.0201143 0.398396 -0.0186112 0.916804" mass="0.212465" diaginertia="0.000392095 0.000337892 0.000238689"/>
+          <joint name="right_leg_rol" pos="0 0 0" axis="0.999999 0 0.00129604" range="-3.14159 3.14159"/>
+          <geom type="mesh" rgba="1 1 1 1" mesh="right_leg_rol"/>
+          <body name="right_leg_yaw" pos="-0.0485893 0 -0.0650702">
+            <inertial pos="-0.00305348 -0.00214822 -0.104161" quat="0.999196 -0.0231849 0.0326934 -0.000709394" mass="0.561994" diaginertia="0.00343972 0.00330301 0.000884745"/>
+            <joint name="right_leg_yaw" pos="0 0 0" axis="-0.00129604 0 0.999999" range="-3.14159 3.14159"/>
+            <geom type="mesh" rgba="1 1 1 1" mesh="right_leg_yaw"/>
+            <body name="right_knee" pos="-0.0117602 0.0412086 -0.185015">
+              <inertial pos="-0.00639034 -0.04592 -0.112527" quat="0.702463 0.0230202 0.021611 0.71102" mass="1.85019" diaginertia="0.0264545 0.025995 0.00183603"/>
+              <joint name="right_knee" pos="0 0 0" axis="0 1 0" range="-3.14159 3.14159"/>
+              <geom type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="right_knee"/>
+              <body name="right_ankle_pitch" pos="-0.00168341 -0.0652086 -0.413064">
+                <inertial pos="-2.64456e-06 0.019 -0.00812721" quat="0.707106 -0.000207109 -0.000207109 0.707107" mass="0.0171591" diaginertia="3.26465e-06 2.45582e-06 2.25511e-06"/>
+                <joint name="right_ankle_pitch" pos="0 0 0" axis="0 -1 0" range="-3.14159 3.14159"/>
+                <geom type="mesh" rgba="1 1 1 1" mesh="right_ankle_pitch"/>
+                <body name="right_ankle_raw" pos="0.016 0.019 -0.0150753">
+                  <inertial pos="0.00170486 6.01478e-08 -0.0260856" quat="0 0.705697 0 0.708514" mass="0.629304" diaginertia="0.00261358 0.00232893 0.000363198"/>
+                  <joint name="right_ankle_raw" pos="0 0 0" axis="-1 0 0" range="-3.14159 3.14159"/>
+                  <geom type="mesh" rgba="0.298039 0.298039 0.298039 1" mesh="right_ankle_raw"/>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+  
+  <actuator>
+    <!-- 左腿关节控制器 - 使用非常保守的PD参数以确保稳定 -->
+    <position  kp="20800" kv="150" joint="left_leg_pitch" name="left_leg_pitch_actuator" ctrlrange="-3.14 3.14"/>
+    <position  kp="20000" kv="150" joint="left_leg_rol" name="left_leg_rol_actuator" ctrlrange="-3.14 3.14"/>
+    <position  kp="2000" kv="150" joint="left_leg_yaw" name="left_leg_yaw_actuator" ctrlrange="-3.14 3.14"/>
+    <position  kp="2000" kv="200" joint="left_knee" name="left_knee_actuator" ctrlrange="-3.14 3.14"/>
+    <position  kp="2700" kv="200" joint="left_ankle_pitch" name="left_ankle_pitch_actuator" ctrlrange="-3.14 3.14"/>
+    <position  kp="3000" kv="100" joint="left_ankle_raw" name="left_ankle_raw_actuator" ctrlrange="-3.14 3.14"/>
+
+    <!-- 右腿关节控制器 - 使用非常保守的PD参数以确保稳定 -->
+    <position  kp="20800" kv="150" joint="right_leg_pitch" name="right_leg_pitch_actuator" ctrlrange="-3.14 3.14"/>
+    <position  kp="20000" kv="150" joint="right_leg_rol" name="right_leg_rol_actuator" ctrlrange="-3.14 3.14"/>
+    <position  kp="2000" kv="150" joint="right_leg_yaw" name="right_leg_yaw_actuator" ctrlrange="-3.14 3.14"/>
+    <position kp="2000" kv="200" joint="right_knee" name="right_knee_actuator" ctrlrange="-3.14 3.14"/>
+    <position kp="2700" kv="200" joint="right_ankle_pitch" name="right_ankle_pitch_actuator" ctrlrange="-3.14 3.14"/>
+    <position kp="3000" kv="100" joint="right_ankle_raw" name="right_ankle_raw_actuator" ctrlrange="-3.14 3.14"/>
+  </actuator>
+</mujoco>

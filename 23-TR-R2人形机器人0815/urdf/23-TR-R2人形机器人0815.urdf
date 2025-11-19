@@ -1,0 +1,743 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="R2">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.00117665871297902 0.00223343832261028 0.182265795522625"
+        rpy="0 0 0" />
+      <mass
+        value="15.164363593055" />
+      <inertia
+        ixx="0.0572906265394081"
+        ixy="-1.57508615267962E-05"
+        ixz="-0.000714485652517766"
+        iyy="0.0411153856813689"
+        iyz="0.00048528814485772"
+        izz="0.0358191121887323" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/wzn/双足/Biped-Locomotion/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/wzn/双足/Biped-Locomotion/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="left_leg_pitch">
+    <inertial>
+      <origin
+        xyz="-0.00251688896073245 -0.0466794286103524 -0.0170464249414737"
+        rpy="0 0 0" />
+      <mass
+        value="0.337531091535058" />
+      <inertia
+        ixx="0.000472639978064759"
+        ixy="-1.2599132814199E-06"
+        ixz="-4.15283216904732E-06"
+        iyy="0.000360017864797971"
+        iyz="-3.36747191319583E-05"
+        izz="0.000358409876213602" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/wzn/双足/Biped-Locomotion/23-TR-R2人形机器人0815/meshes/meshes/left_leg_pitch.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/wzn/双足/Biped-Locomotion/23-TR-R2人形机器人0815/meshes/meshes/left_leg_pitch.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_leg_pitch"
+    type="revolute">
+    <origin
+      xyz="0 -0.069 -0.1065"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="left_leg_pitch" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="100"
+      velocity="10" />
+  </joint>
+  <link
+    name="left_leg_rol">
+    <inertial>
+      <origin
+        xyz="-0.0327109300686486 -0.00101967891642396 -0.036621220504677"
+        rpy="0 0 0" />
+      <mass
+        value="0.604619876832841" />
+      <inertia
+        ixx="0.000867240931618368"
+        ixy="-4.56710170579452E-06"
+        ixz="-0.000219904509054264"
+        iyy="0.000954982060712569"
+        iyz="5.39055457507291E-06"
+        izz="0.000888304416437133" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/wzn/双足/Biped-Locomotion/23-TR-R2人形机器人0815/meshes/meshes/left_leg_rol.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/wzn/双足/Biped-Locomotion/23-TR-R2人形机器人0815/meshes/meshes/left_leg_rol.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_leg_rol"
+    type="revolute">
+    <origin
+      xyz="0.0568021183172384 -0.0499933609251539 -0.0203353501209685"
+      rpy="0 0 0" />
+    <parent
+      link="left_leg_pitch" />
+    <child
+      link="left_leg_rol" />
+    <axis
+      xyz="-0.999981854966748 0 0.00602409638554205" />
+    <limit
+      lower="-1.0"
+      upper="1.0"
+      effort="100"
+      velocity="10" />
+  </joint>
+  <link
+    name="left_leg_yaw">
+    <inertial>
+      <origin
+        xyz="-0.00312326966809798 0.00213973651422342 -0.103905105276982"
+        rpy="0 0 0" />
+      <mass
+        value="1.51191680217784" />
+      <inertia
+        ixx="0.00300966586461576"
+        ixy="-2.21039758572268E-06"
+        ixz="0.000103772362896701"
+        iyy="0.00260974676832353"
+        iyz="4.35859817705421E-05"
+        izz="0.00235519867991485" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/wzn/双足/Biped-Locomotion/23-TR-R2人形机器人0815/meshes/meshes/left_leg_yaw.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/wzn/双足/Biped-Locomotion/23-TR-R2人形机器人0815/meshes/meshes/left_leg_yaw.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_leg_yaw"
+    type="revolute">
+    <origin
+      xyz="-0.0490643162065348 0 -0.0647128063463857"
+      rpy="0 0 0" />
+    <parent
+      link="left_leg_rol" />
+    <child
+      link="left_leg_yaw" />
+    <axis
+      xyz="0.00602409638554184 0 0.999981854966748" />
+    <limit
+      lower="-1.0"
+      upper="1.0"
+      effort="100"
+      velocity="10" />
+  </joint>
+  <link
+    name="left_knee">
+    <inertial>
+      <origin
+        xyz="-0.00555954244677691 0.0462597867745206 -0.112556293557122"
+        rpy="0 0 0" />
+      <mass
+        value="1.85019341131132" />
+      <inertia
+        ixx="0.0259199369539111"
+        ixy="-1.46665591129737E-06"
+        ixz="-0.0013452088545678"
+        iyy="0.0264554649903723"
+        iyz="4.80771450663375E-05"
+        izz="0.00191019510729061" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/wzn/双足/Biped-Locomotion/23-TR-R2人形机器人0815/meshes/meshes/left_knee.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/wzn/双足/Biped-Locomotion/23-TR-R2人形机器人0815/meshes/meshes/left_knee.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_knee"
+    type="revolute">
+    <origin
+      xyz="-0.0111142763809927 -0.0412085530017904 -0.184936402204992"
+      rpy="0 0 0" />
+    <parent
+      link="left_leg_yaw" />
+    <child
+      link="left_knee" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="2.0"
+      effort="100"
+      velocity="10" />
+  </joint>
+  <link
+    name="left_ankle_pitch">
+    <inertial>
+      <origin
+        xyz="-2.64456067249064E-06 -0.0190000024338323 -0.00812720824388935"
+        rpy="0 0 0" />
+      <mass
+        value="0.0171591478812247" />
+      <inertia
+        ixx="2.4558210811628E-06"
+        ixy="-1.64871514418719E-12"
+        ixz="1.17577213395154E-10"
+        iyy="3.26464904844395E-06"
+        iyz="-4.73794122307032E-13"
+        izz="2.25510633303583E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/wzn/双足/Biped-Locomotion/23-TR-R2人形机器人0815/meshes/meshes/left_ankle_pitch.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/wzn/双足/Biped-Locomotion/23-TR-R2人形机器人0815/meshes/meshes/left_ankle_pitch.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_ankle_pitch"
+    type="revolute">
+    <origin
+      xyz="0.00135310640938061 0.0652085530017903 -0.41306557482202"
+      rpy="0 0 0" />
+    <parent
+      link="left_knee" />
+    <child
+      link="left_ankle_pitch" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-0.7"
+      upper="0.7"
+      effort="100"
+      velocity="10" />
+  </joint>
+  <link
+    name="left_ankle_raw">
+    <inertial>
+      <origin
+        xyz="0.00170486123041018 6.0147815533762E-08 -0.0260856488682867"
+        rpy="0 0 0" />
+      <mass
+        value="0.62930389291396" />
+      <inertia
+        ixx="0.000363233257575954"
+        ixy="1.43405477460658E-09"
+        ixz="-8.96417225263399E-06"
+        iyy="0.00232893464645625"
+        iyz="-9.43626799502072E-11"
+        izz="0.00261354084496982" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/wzn/双足/Biped-Locomotion/23-TR-R2人形机器人0815/meshes/meshes/left_ankle_raw.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/wzn/双足/Biped-Locomotion/23-TR-R2人形机器人0815/meshes/meshes/left_ankle_raw.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_ankle_raw"
+    type="revolute">
+    <origin
+      xyz="0.0159999999999991 -0.0189999999999976 -0.015075332712404"
+      rpy="0 0 0" />
+    <parent
+      link="left_ankle_pitch" />
+    <child
+      link="left_ankle_raw" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="-0.7"
+      upper="0.7"
+      effort="100"
+      velocity="10" />
+  </joint>
+  <link
+    name="right_leg_pitch">
+    <inertial>
+      <origin
+        xyz="-0.00254724983396937 0.0432466227118576 -0.0132085590391079"
+        rpy="0 0 0" />
+      <mass
+        value="0.386381137410511" />
+      <inertia
+        ixx="0.000557023051915317"
+        ixy="-3.73583415146485E-07"
+        ixz="-2.02194105837585E-06"
+        iyy="0.000420066199047437"
+        iyz="6.49223073608652E-05"
+        izz="0.00040739545655328" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/wzn/双足/Biped-Locomotion/23-TR-R2人形机器人0815/meshes/meshes/right_leg_pitch.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/wzn/双足/Biped-Locomotion/23-TR-R2人形机器人0815/meshes/meshes/right_leg_pitch.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_leg_pitch"
+    type="revolute">
+    <origin
+      xyz="0 0.069 -0.1065"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="right_leg_pitch" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="100"
+      velocity="10" />
+  </joint>
+  <link
+    name="right_leg_rol">
+    <inertial>
+      <origin
+        xyz="-0.0311875648003793 0.000817095546093854 -0.0349200421575037"
+        rpy="0 0 0" />
+      <mass
+        value="0.212465072062616" />
+      <inertia
+        ixx="0.000310038371729108"
+        ixy="3.2238256397354E-06"
+        ixz="-7.64310577723677E-05"
+        iyy="0.000338004108548057"
+        iyz="-8.21170641634305E-07"
+        izz="0.000320633301142525" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/wzn/双足/Biped-Locomotion/23-TR-R2人形机器人0815/meshes/meshes/right_leg_rol.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/wzn/双足/Biped-Locomotion/23-TR-R2人形机器人0815/meshes/meshes/right_leg_rol.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_leg_rol"
+    type="revolute">
+    <origin
+      xyz="0.0566994535557624 0.0500066390748463 -0.019919331853025"
+      rpy="0 0 0" />
+    <parent
+      link="right_leg_pitch" />
+    <child
+      link="right_leg_rol" />
+    <axis
+      xyz="0.999999160144006 0 0.00129603675970074" />
+    <limit
+      lower="-1.0"
+      upper="1.0"
+      effort="100"
+      velocity="10" />
+  </joint>
+  <link
+    name="right_leg_yaw">
+    <inertial>
+      <origin
+        xyz="-0.00305348144212537 -0.00214822476480814 -0.104161073565511"
+        rpy="0 0 0" />
+      <mass
+        value="0.561993600216927" />
+      <inertia
+        ixx="0.0034288059641219"
+        ixy="-7.71691207481304E-06"
+        ixz="-0.000166475811846329"
+        iyy="0.00329783254612417"
+        iyz="-0.000111546607627749"
+        izz="0.000900842320072032" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/wzn/双足/Biped-Locomotion/23-TR-R2人形机器人0815/meshes/meshes/right_leg_yaw.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/wzn/双足/Biped-Locomotion/23-TR-R2人形机器人0815/meshes/meshes/right_leg_yaw.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_leg_yaw"
+    type="revolute">
+    <origin
+      xyz="-0.0485892971500358 0 -0.0650702284651375"
+      rpy="0 0 0" />
+    <parent
+      link="right_leg_rol" />
+    <child
+      link="right_leg_yaw" />
+    <axis
+      xyz="-0.00129603675970052 0 0.999999160144006" />
+    <limit
+      lower="-1.0"
+      upper="1.0"
+      effort="100"
+      velocity="10" />
+  </joint>
+  <link
+    name="right_knee">
+    <inertial>
+      <origin
+        xyz="-0.00639033774487412 -0.0459199741161526 -0.112527196919465"
+        rpy="0 0 0" />
+      <mass
+        value="1.85019323679713" />
+      <inertia
+        ixx="0.0258989074305095"
+        ixy="-3.07427375503214E-06"
+        ixz="-0.00152133779678847"
+        iyy="0.0264543946220468"
+        iyz="3.99084214184645E-05"
+        izz="0.00193227997411189" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/wzn/双足/Biped-Locomotion/23-TR-R2人形机器人0815/meshes/meshes/right_knee.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/wzn/双足/Biped-Locomotion/23-TR-R2人形机器人0815/meshes/meshes/right_knee.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_knee"
+    type="revolute">
+    <origin
+      xyz="-0.0117602231211834 0.0412085530017909 -0.185015397067756"
+      rpy="0 0 0" />
+    <parent
+      link="right_leg_yaw" />
+    <child
+      link="right_knee" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="2.0"
+      effort="100"
+      velocity="10" />
+  </joint>
+  <link
+    name="right_ankle_pitch">
+    <inertial>
+      <origin
+        xyz="-2.64456067246288E-06 0.0189999975661676 -0.00812720824388957"
+        rpy="0 0 0" />
+      <mass
+        value="0.0171591478812246" />
+      <inertia
+        ixx="2.45582108116279E-06"
+        ixy="-1.64871514599956E-12"
+        ixz="1.17577213395008E-10"
+        iyy="3.26464904844395E-06"
+        iyz="-4.73794131711534E-13"
+        izz="2.25510633303582E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/wzn/双足/Biped-Locomotion/23-TR-R2人形机器人0815/meshes/meshes/right_ankle_pitch.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/wzn/双足/Biped-Locomotion/23-TR-R2人形机器人0815/meshes/meshes/right_ankle_pitch.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_ankle_pitch"
+    type="revolute">
+    <origin
+      xyz="-0.00168341293145072 -0.0652085530017921 -0.413064360748912"
+      rpy="0 0 0" />
+    <parent
+      link="right_knee" />
+    <child
+      link="right_ankle_pitch" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-0.7"
+      upper="0.7"
+      effort="100"
+      velocity="10" />
+  </joint>
+  <link
+    name="right_ankle_raw">
+    <inertial>
+      <origin
+        xyz="0.0017048612304101 6.01478156170288E-08 -0.0260856488682863"
+        rpy="0 0 0" />
+      <mass
+        value="0.629303892913963" />
+      <inertia
+        ixx="0.000363233257575955"
+        ixy="1.43405477120655E-09"
+        ixz="-8.96417225263319E-06"
+        iyy="0.00232893464645625"
+        iyz="-9.4362680125161E-11"
+        izz="0.00261354084496983" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/wzn/双足/Biped-Locomotion/meshes/right_ankle_raw.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/wzn/双足/Biped-Locomotion/23-TR-R2人形机器人0815/meshes/meshes/right_ankle_raw.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_ankle_raw"
+    type="revolute">
+    <origin
+      xyz="0.016 0.019 -0.015075332712404"
+      rpy="0 0 0" />
+    <parent
+      link="right_ankle_pitch" />
+    <child
+      link="right_ankle_raw" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="-0.7"
+      upper="0.7"
+      effort="100"
+      velocity="10" />
+  </joint>
+</robot>
