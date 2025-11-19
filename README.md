@@ -10,6 +10,8 @@ Then   run scripts/ik_walk.py to get qpos
 
 finally, run scripts/pid_control.py to get the results
 
+or you can run scripts/step_control.py press 'w' to go forward
+
 ### Tips
 
 com_height /home/wzn/双足/Biped-Locomotion/motion_planning/walking.py line13 
