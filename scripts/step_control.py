@@ -47,8 +47,8 @@ key_pressed = None
 def on_press(key):
     global key_pressed
     try:
-        if key.char == 'd':
-            key_pressed = 'd'
+        if key.char == 's':
+            key_pressed = 's'
         elif key.char == 'w':
             key_pressed = 'w'
     except AttributeError:
@@ -154,7 +154,8 @@ def walk():
         stepHeight = 0.02
         supPoint = np.array([0., 0.065])
         pre = PreviewControl(dt=1. / 240., Tsup_time=0.5, Tdl_time=0.1, previewStepNum=190)
-        
+        global key_flag
+        key_flag = 'w'
         while mjviewer.is_running():
             
             global key_pressed
@@ -162,7 +163,7 @@ def walk():
             
             if key_pressed == 'w':
                 print("\n执行 'w' 键操作: 生成新轨迹并添加到队列")
-                
+
                 CoM_trj, footTrjL, footTrjR = pre.footPrintAndCoM_trajectoryGenerator(
                     inputTargetZMP=supPoint,
                     inputFootPrint=supPoint,
@@ -198,7 +199,48 @@ def walk():
                 supPoint[1] = -supPoint[1]
                 # 重置按键状态
                 key_pressed = None
+                key_flag = 'w'
             
+            if key_pressed == 's':
+                print("\n执行 's' 键操作: 生成新轨迹并添加到队列")
+
+                CoM_trj, footTrjL, footTrjR = pre.footPrintAndCoM_trajectoryGenerator(
+                    inputTargetZMP=supPoint,
+                    inputFootPrint=supPoint,
+                    stepHeight=stepHeight
+                )
+                
+                current_qpos = data.qpos[7:].copy()
+
+                for i in range(len(CoM_trj)):
+
+                    ik_qpos_left = inverse_kinematics(6,current_qpos,R_l,
+                                                    [
+                                                        footTrjL[i][0]-CoM_trj[i][0],
+                                                        CoM_trj[i][1]-footTrjL[i][1],
+                                                        -(0.70-footTrjL[i][2])
+                                                    ]
+                                                    )
+                    ik_qpos_right = inverse_kinematics(12,current_qpos,R_r,
+                                                    [
+                                                        footTrjR[i][0]-CoM_trj[i][0],
+                                                        CoM_trj[i][1]-footTrjR[i][1],
+                                                        -(0.70-footTrjR[i][2])
+                                                        ]
+                                                    )
+                    
+                    new_vector = np.concatenate([ik_qpos_left[:6], ik_qpos_right[6:]])
+                    current_qpos = new_vector
+                    # 添加到队列尾部
+                    combined_vectors.append(new_vector)
+                
+                supPoint[0] -= 0.075
+                # y坐标实现左右腿变换
+                supPoint[1] = -supPoint[1]
+                # 重置按键状态
+                key_pressed = None
+                key_flag = 's'
+                
             if count % 4 == 0:
                 # 从队列头部取出并执行动作（FIFO）
                 if len(combined_vectors) > 0:
